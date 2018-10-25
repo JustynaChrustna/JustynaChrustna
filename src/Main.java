@@ -45,20 +45,27 @@ public class Main {
         return aminoAcidCounter;
     }
     private static void scanFile() throws FileNotFoundException {
-        System.out.println("Enter file path");
-        Scanner pathScanner = new Scanner(System.in);
-        String path = pathScanner.nextLine();
-        File proteinFile = new File(path);
+        File proteinFile = new File(readPath());
         Scanner proteinScanner = new Scanner(proteinFile);
+
         String protein1;
         String protein2;
+
         while (proteinScanner.hasNext()) {
             protein1 = proteinScanner.next();
             protein2 = proteinScanner.next();
             System.out.println(changePossible(protein1, protein2));
         }
-        pathScanner.close();
         proteinScanner.close();
     }
+
+    private static String readPath(){
+        System.out.println("Enter file path");
+        Scanner pathScanner = new Scanner(System.in);
+        String path=pathScanner.nextLine();
+        pathScanner.close();
+        return path;
+    }
+
 }
 
